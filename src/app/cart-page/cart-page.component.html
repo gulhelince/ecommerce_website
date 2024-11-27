@@ -1,0 +1,103 @@
+<div class="cart-container mt-10">
+  <h1>Cart</h1>
+
+<div class="">
+  <ul class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" routerLink="/cart-page">Shopping cart</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">Checkout details</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Order complete</a>
+    </li>
+  </ul>
+</div> 
+
+  <br>
+  <br>
+
+
+ 
+  <div class="cart">
+      
+    <table class="cart-items">
+      
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      
+      <tbody class="table-group-divider">
+        <tr *ngFor="let item of cartItems">
+          <td>
+            <div class="product">
+              <img [src]="item.image" [alt]="item.name">
+              <div>
+                <p>{{ item.name }}</p>
+                <p>Color: {{ item.color }}</p>
+                <button (click)="removeItem(item)">Remove</button>
+              </div>
+            </div>
+          </td>
+          <td>
+              <div class="quantity border border-secondary-subtle">
+                  <button (click)="updateQuantity(item, -1)">-</button>
+                  <span>{{ item.quantity }}</span>
+                  <button (click)="updateQuantity(item, 1)">+</button>
+                </div>
+            
+          </td>
+          <td>${{ item.price }}</td>
+          <td>${{ item.price * item.quantity }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="cart-summary">
+      <h2>Cart summary</h2>
+      <form>
+        <div class="shipping-option border border-secondary-subtle">
+          <label>
+            <input  type="radio" name="shipping" value="free" checked />
+            <span>Free shipping</span>
+            <span class="price">$0.00</span>
+          </label>
+        </div>
+        <div class="shipping-option  border border-secondary-subtle">
+          <label>
+            <input type="radio" name="shipping" value="express" />
+            <span>Express shipping</span>
+            <span class="price">+$15.00</span>
+          </label>
+        </div>
+        <div class="shipping-option  border border-secondary-subtle">
+          <label>
+            <input type="radio" name="shipping" value="pickup" />
+            <span>Pick Up</span>
+            <span class="price">%21.00</span>
+          </label>
+        </div>
+      </form>
+      <div class="totals">
+        <div class="subtotal">
+          <span>Subtotal</span>
+          <span>$1234.00</span>
+        </div>
+        <div class="total">
+          <span>Total</span>
+          <span>$1345.00</span>
+        </div>
+      </div>
+      <button class="checkout-button">Checkout</button>
+    </div>
+    
+  </div>
+  </div>
+
+<i class="fa-solid fa-house"></i>
